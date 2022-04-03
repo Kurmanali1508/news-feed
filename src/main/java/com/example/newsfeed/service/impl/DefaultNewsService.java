@@ -3,6 +3,8 @@ package com.example.newsfeed.service.impl;
 import com.example.newsfeed.entity.News;
 import com.example.newsfeed.repository.NewsRepository;
 import com.example.newsfeed.service.NewsService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +30,10 @@ public class DefaultNewsService implements NewsService {
     @Override
     public News save(News news) {
         return newsRepository.save(news);
+    }
+
+    @Override
+    public Page<News> getAllPage(Pageable pageable) {
+        return newsRepository.findAll(pageable);
     }
 }

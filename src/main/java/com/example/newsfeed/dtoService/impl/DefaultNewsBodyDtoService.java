@@ -27,7 +27,7 @@ public class DefaultNewsBodyDtoService implements NewsBodyDtoService {
 
         String fileName = baseFileDtoService.storeFile(multipartFile);
 
-        if (fileName.endsWith("text")) {
+        if (fileName.endsWith("text") || fileName.endsWith("txt")) {
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("api/v1/download/")
                     .path(fileName)

@@ -8,6 +8,9 @@ import com.example.newsfeed.entity.News;
 import com.example.newsfeed.mapper.NewsMapper;
 import com.example.newsfeed.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -62,5 +65,17 @@ public class DefaultNewsDtoService implements NewsDtoService {
         news.setNewsBody(newsBodyDtoService.create(textFile));
 
         return newsMapper.toNewsDto(newsService.save(news));
+    }
+
+    @Override
+    public Page<NewsDto> getAllPage(Pageable pageable) {
+       List<NewsDto> news = newsService.getAllPage(pageable)
+               .stream()
+               .map(newsMapper::toNewsDto)
+               .collect(Collectors.toList());
+
+       Page<NewsDto> newsPage = new PageImpl<>(news);
+
+       return newsPage;
     }
 }
