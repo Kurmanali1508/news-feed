@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "news")
+@Table(name = "news_body")
 public class NewsBody extends BaseFileEntity {
     @Column(name = "file_name")
     private String fileName;

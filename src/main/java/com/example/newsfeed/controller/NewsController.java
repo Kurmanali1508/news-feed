@@ -32,4 +32,9 @@ public class NewsController {
     public Page<NewsDto> getAll(@PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return newsDtoService.getAllPage(pageable);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        newsDtoService.delete(id);
+    }
 }

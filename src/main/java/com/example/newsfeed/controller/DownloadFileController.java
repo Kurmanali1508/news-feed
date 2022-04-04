@@ -30,8 +30,8 @@ public class DownloadFileController {
         String contentType = null;
         try {
             contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException ex) {
-            System.out.println("kjkjkjk");
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
         }
 
         // Fallback to the default content type if type could not be determined

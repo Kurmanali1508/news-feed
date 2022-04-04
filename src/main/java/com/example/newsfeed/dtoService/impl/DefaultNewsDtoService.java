@@ -69,13 +69,13 @@ public class DefaultNewsDtoService implements NewsDtoService {
 
     @Override
     public Page<NewsDto> getAllPage(Pageable pageable) {
-       List<NewsDto> news = newsService.getAllPage(pageable)
-               .stream()
-               .map(newsMapper::toNewsDto)
-               .collect(Collectors.toList());
+        List<NewsDto> news = newsService.getAllPage(pageable)
+                .stream()
+                .map(newsMapper::toNewsDto)
+                .collect(Collectors.toList());
 
-       Page<NewsDto> newsPage = new PageImpl<>(news);
+        Page<NewsDto> newsPage = new PageImpl<>(news);
 
-       return newsPage;
+        return newsPage;
     }
 }
